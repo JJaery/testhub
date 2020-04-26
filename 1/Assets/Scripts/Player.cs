@@ -6,7 +6,13 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 0.1f;
     public float stamina = 1.0f;
-    
+    private Rigidbody2D _rigidbody;
+
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
         Move();        
@@ -37,6 +43,7 @@ public class Player : MonoBehaviour
         }
         if (stamina > 3.0f)
             stamina = 3.0f;
-        transform.position = Pos;
+
+        _rigidbody.MovePosition(Pos);
     }  
 }
